@@ -224,7 +224,7 @@
         </div>
         <div class="row justify-content-center">
           <div class="col-md-6">
-            <form>
+            <form name='Contact'>
               <div class="mb-3">
                 <label
                   for="name"
@@ -235,7 +235,7 @@
                   type="text"
                   class="form-control"
                   id="name"
-                  aria-describedby="name"
+                  aria-describedby="name" name="nama"
                 />
               </div>
               <div class="mb-3">
@@ -248,7 +248,7 @@
                   type="email"
                   class="form-control"
                   id="email"
-                  aria-describedby="email"
+                  aria-describedby="email" name="email"
                 />
               </div>
               <div class="mb-3">
@@ -260,7 +260,7 @@
                 <textarea
                   class="form-control"
                   id="pesan"
-                  rows="3"
+                  rows="3" name="pesan"
                 ></textarea>
               </div>
               <button
@@ -301,5 +301,16 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
+    <script>
+  const scriptURL = '<https://script.google.com/macros/s/AKfycbw7uA_N1rXo-5DLLWXnUKpvfixxtudJL5k8nL4b0PlfyR8wv8sXNfW0JBaJidXdem5_/exec>'
+  const form = document.forms['Contact']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
   </body>
 </html>
